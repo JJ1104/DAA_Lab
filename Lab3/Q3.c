@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include <math.h>
 
-void subsets(int* arr,int n,int des_sum,int* opcount){\
+void subsets(int* arr,int n,int des_sum,int* opcount){
 	int n_sets = 0;
 	int n_subsets = pow(2,n);
 	for(int i=0;i<n_subsets;i++){
