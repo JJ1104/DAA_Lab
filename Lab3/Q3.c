@@ -1,5 +1,25 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include <math.h>
+
+void subsets(int* arr,int n,int des_sum){
+	int n_subsets = pow(2,n);
+	for(int i=0;i<n_subsets;i++){
+		int sum=0,count=0;
+		int* sub = (int*)calloc(n,sizeof(int));
+		for(int j=0;j<n;j++){
+			if(i & (1 << j)){
+				sub[count++] = arr[j];
+				sum+=arr[j];
+			}
+		}
+		if(des_sum == sum){
+			for(int k=0;k<count;k++)
+				printf("%d ",sub[k]);
+			printf("\n");
+		}
+	}
+}
 
 int main(){
 	int n;
@@ -10,33 +30,8 @@ int main(){
 	int sum=0;
 	for(int i=0;i<n;i++){
 		scanf("%d",&arr[i]);
-		sum += arr[i];
+		sum+=arr[i];
 	}
-	int m = n/2;
-	int des_sum = sum/2;
-	int curr = 0;
-	for(int i=0;i<n-1;i++){
-		curr = arr[i];
-		int* seg = (int*)calloc(m,sizeof(int));
-		for(int j=i+1;j<n;j++){
-			curr += arr[j];
-			seg[--m] = arr[j];
-			if(m == 0){
-				m = n/2;
-			}
-			if(curr > des_sum){
-				curr = arr[i];
-				continue;
-			}
-			if(curr == des_sum){
-				for(int k = 0;i<m;k++){
-					printf("%d",seg[k]);
-				}
-			}
-		}
-	}
-
-
-
+	subsets(arr,n,sum/2);
 	return 0;
 }

@@ -15,7 +15,7 @@ int main(){
 		int count=0;
 		int k = i;
 		for(int j=0;j<m;j++){
-			opcount++;
+			opcount++; 
 			if(text[k] == pattern[j]){
 				k++;	
 				count++;
