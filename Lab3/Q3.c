@@ -16,8 +16,14 @@ void subsets(int* arr,int n,int des_sum,int* opcount){
 			}
 		}
 		if(des_sum == sum){
+			if(n_sets == 0)
+				int set1[count];
 			n_sets++;
 			for(int k=0;k<count;k++)
+				if(n_sets == 0)
+					set1[k] = sub[k];
+				if(n_sets == 1 && set1[k] == sub[k])
+					continue
 				printf("%d ",sub[k]);
 			printf("\n");
 			if(n_sets == 2)
